@@ -1,8 +1,8 @@
 # ProGamer
 
-##### Projeto ProGamer para disciplina Digital Business Enablement - FIAP
+#### Projeto ProGamer para disciplina Digital Business Enablement - FIAP
 Tecnologias utilizadas:
-- MAven
+- Maven
 - JPA
 - JSF
 - Componentes [Primeface](https://www.primefaces.org/)
