@@ -36,5 +36,16 @@ public class SetupDAO {
 		String jpql = "SELECT s FROM Setup s";
 		return em.createQuery(jpql, Setup.class).getResultList();
 	}
+
+	public Setup findByid(Long id) {
+		return em.find(Setup.class, id);
+	}
+
+	public void update(Setup setup) {
+		em.getTransaction().begin();
+		em.merge(setup);
+		em.flush();
+		em.getTransaction().commit();
+	}
 	
 }
