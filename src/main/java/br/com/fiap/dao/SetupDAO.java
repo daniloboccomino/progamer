@@ -19,7 +19,7 @@ import javax.persistence.EntityManager;
 import br.com.fiap.model.Setup;
 import br.com.fiap.util.EntityManagerFacade;
 
-public class SetupDAO {
+public class SetupDao {
 	
 	private EntityManager em = new EntityManagerFacade().getEntityManager();
 
@@ -45,6 +45,12 @@ public class SetupDAO {
 		em.getTransaction().begin();
 		em.merge(setup);
 		em.flush();
+		em.getTransaction().commit();
+	}
+
+	public void delete(Setup setup) {
+		em.getTransaction().begin();
+		em.remove(setup);
 		em.getTransaction().commit();
 	}
 	

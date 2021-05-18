@@ -14,6 +14,8 @@ package br.com.fiap.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.TypedQuery;
 
 import br.com.fiap.model.Usuario;
 import br.com.fiap.util.EntityManagerFacade;
@@ -34,6 +36,39 @@ public class UsuarioDao {
 	public List<Usuario> getAll() {
 		String jpql = "SELECT u FROM Usuario u";
 		return em.createQuery(jpql, Usuario.class).getResultList();
+	}
+	
+	public Usuario findByid(Long id) {
+		return em.find(Usuario.class, id);
+	}
+
+	public void update(Usuario usuario) {
+		em.getTransaction().begin();
+		em.merge(usuario);
+		em.flush();
+		em.getTransaction().commit();
+	}
+
+	public void delete(Usuario usuario) {
+		em.getTransaction().begin();
+		em.remove(usuario);
+		em.getTransaction().commit();
+	}
+
+	public boolean exist(Usuario usuario) {
+		TypedQuery<Usuario> query = em.createQuery("SELECT u FROM Usuario u WHERE email = :email AND password = :password", Usuario.class);
+		query.setParameter("email", usuario.getEmail());
+		query.setParameter("password", usuario.getPassword());
+		
+		Usuario result;
+		try {
+			result = query.getSingleResult();
+			return true;
+		} catch (NoResultException e) {
+			e.printStackTrace();
+			return false;
+		}
+
 	}
 
 }

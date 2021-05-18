@@ -20,8 +20,7 @@
 					<div class="p-field p-grid">
 						<label for="name" class="p-col-12 p-mb-3 p-md-3 p-mb-md-0">Name</label>
 						<div class="p-col-12 p-md-9">
-							<p:inputText id="name" value="#{usuarioBean.usuario.name}"
-								required="true">
+							<p:inputText id="name" value="#{usuarioBean.usuario.name}" required="true">
 								<f:validateLength minimum="2" maximum="255" />
 								<f:ajax event="blur" render="messages" />
 							</p:inputText>
@@ -30,9 +29,7 @@
 					<div class="p-field p-grid">
 						<label for="birthDate" class="p-col-12 p-mb-3 p-md-3 p-mb-md-0">Birth Date</label>
 						<div class="p-col-12 p-md-9">
-							<p:calendar id="birthDate"
-								value="#{usuarioBean.usuario.birthDate}" showOn="button"
-								mask="mm/dd/yyyy" required="true">
+							<p:calendar id="birthDate" value="#{usuarioBean.usuario.birthDate}" showOn="button" mask="mm/dd/yyyy" required="true">
 								<f:ajax event="blur" render="messages" />
 							</p:calendar>
 						</div>
@@ -40,8 +37,7 @@
 					<div class="p-field p-grid">
 						<label for="email" class="p-col-12 p-mb-3 p-md-3 p-mb-md-0">Email</label>
 						<div class="p-col-12 p-md-9">
-							<p:inputText id="email" value="#{usuarioBean.usuario.email}"
-								required="true">
+							<p:inputText id="email" value="#{usuarioBean.usuario.email}" required="true">
 								<f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]"/>
 								<f:ajax event="blur" render="messages" />
 							</p:inputText>
@@ -50,8 +46,7 @@
 					<div class="p-field p-grid">
 						<label for="password" class="p-col-12 p-mb-3 p-md-3 p-mb-md-0">Password</label>
 						<div class="p-col-12 p-md-9">
-							<p:password id="password" value="#{usuarioBean.usuario.password}"
-								toggleMask="true" redisplay="true" required="true">
+							<p:password id="password" value="#{usuarioBean.usuario.password}" toggleMask="true" redisplay="true" required="true">
 								<f:validateLength minimum="6" maximum="255" />
 								<f:ajax event="blur" render="messages" />
 							</p:password>
@@ -60,10 +55,8 @@
 				</div>
 			</h:form>
 			<f:facet name="footer">
-				<p:commandButton icon="pi pi-times" value="Cancel"
-					styleClass="ui-button-secondary" style="margin-right: .5em" />
-				<p:commandButton icon="pi pi-check" value="Save"
-					action="#{usuarioBean.save}">
+				<p:commandButton icon="pi pi-times" value="Cancel" styleClass="ui-button-secondary" style="margin-right: .5em" />
+				<p:commandButton icon="pi pi-check" value="Save" action="#{usuarioBean.save}">
 					<f:ajax execute="@form" render="messages" />
 				</p:commandButton>
 			</f:facet>

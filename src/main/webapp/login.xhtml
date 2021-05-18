@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<ui:composition template="_template.xhtml">
+	<ui:define name="menu"></ui:define>
+	<ui:define name="content">
+		<p:messages id="messages">
+			<p:autoUpdate />
+		</p:messages>
+
+		<p:card class="card-form">
+			<f:facet name="title">Login</f:facet>
+			<h:form>
+				<div class="ui-fluid">
+					<div class="p-field p-grid">
+						<label for="email" class="p-col-12 p-mb-3 p-md-3 p-mb-md-0">Email</label>
+						<div class="p-col-12 p-md-9">
+							<p:inputText id="email" value="#{usuarioBean.usuario.email}" required="true" requiredMessage="E-mail obrigatorio">
+								<f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+								<f:ajax event="blur" render="messages-email" />
+							</p:inputText>
+							<p:message for="email" id="messages-email" />
+						</div>
+					</div>
+					<div class="p-field p-grid">
+						<label for="password" class="p-col-12 p-mb-3 p-md-3 p-mb-md-0">Password</label>
+						<div class="p-col-12 p-md-9">
+							<p:password id="password" value="#{usuarioBean.usuario.password}" toggleMask="true" redisplay="true" required="true" requiredMessage="Senha obrigatorio">
+								<f:ajax event="blur" render="messages-password" />
+							</p:password>
+							<p:message for="password" id="messages-password" />
+						</div>
+					</div>
+				</div>
+			</h:form>
+			<f:facet name="footer">
+				<p:commandButton icon="pi pi-check" value="Login" action="#{usuarioBean.login}" />
+				<p:messages />
+			</f:facet>
+		</p:card>
+
+
+	</ui:define>
+</ui:composition>
+
+</html>
